@@ -33,7 +33,7 @@ node {
 
     stage('Run image'){
 
-    	docker.image('rafael1abrao/node:latest').withRun('-p 8000:3000') {
+    	docker.image('rafael1abrao/node').withRun('-p 8000:3000') {
             /* do things */
         }
     }
