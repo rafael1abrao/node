@@ -25,9 +25,16 @@ node {
     stage('Pull image'){
 
     	docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-        	def image
-		image = docker.image('rafael1abrao/node:latest')
+            def image
+		    image = docker.image('rafael1abrao/node:latest')
         	image.pull()
     	}
+    }
+
+    stage('Run image'){
+
+    	docker.image('rafael1abrao/node:latest').withRun('-d -p 8000:3000') {
+            /* do things */
+        }
     }
 }
