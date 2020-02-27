@@ -34,8 +34,7 @@ node {
 
     stage('Remote container') {
         docker.withServer('tcp://10.5.193.122:2376', 'swarm-certs') {
-            app = docker.container('node')
-            app.stop()
+            app.image('rafael1abrao/node').stop();
             app.image('rafael1abrao/node').run('-p 8000:3000 --name node')
         }
    }
