@@ -21,7 +21,7 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials-rafa') {
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credenciais-rafa') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
@@ -34,7 +34,7 @@ node {
 
     stage('Pull image'){
 
-    	docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials-rafa') {
+    	docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credenciais-rafa') {
             def image
 		    image = docker.image('rafael1abrao/node:latest')
         	image.pull()
