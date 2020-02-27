@@ -2,7 +2,7 @@ node {
     def app
     def remote = [:]
     remote.name = 'Wdcmldev01'
-    remote.host = 'Wdcmldev01.westcom.com.br'
+    remote.host = 'Wdcmldev01.westcon.com.br'
     remote.user = 'sisadmin'
     remote.password = 'adminsis'
     remote.allowAnyHosts = true
