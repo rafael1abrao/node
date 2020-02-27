@@ -1,5 +1,5 @@
 node {
-    def app
+    def app = [:]
     def remote = [:]
     remote.name = 'Wdcmldev01'
     remote.host = 'Wdcmldev01.westcon.com.br'
@@ -32,13 +32,13 @@ node {
     //   sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
     // }
 
-    stage('Remote docker') {
+    stage('Remote container') {
         docker.withServer('tcp://10.5.193.122:2376', 'swarm-certs') {
-            def apiContainer = docker.container('node')
-            apiContainer.stop()
-            docker.image('rafael1abrao/node').run('-p 8000:3000 --name node') 
+            app = docker.container('node')
+            app.stop()
+            app.image('rafael1abrao/node').run('-p 8000:3000 --name node')
         }
-    }
+   }
 
     // stage('Pull image'){
 
