@@ -27,10 +27,10 @@ node {
         }
     }
 
-    stage('Remote SSH') {
-      sshCommand remote: remote, command: "ls -lrt"
-      sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
-    }
+    // stage('Remote SSH') {
+    //   sshCommand remote: remote, command: "ls -lrt"
+    //   sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
+    // }
 
     stage('Remote docker') {
         docker.withServer('tcp://10.5.193.122:2376', 'swarm-certs') {
@@ -40,19 +40,19 @@ node {
         }
     }
 
-    stage('Pull image'){
+    // stage('Pull image'){
 
-    	docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credenciais-rafa') {
-            def image
-		    image = docker.image('rafael1abrao/node:latest')
-        	image.pull()
-    	}
-    }
+    // 	docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credenciais-rafa') {
+    //         def image
+	// 	    image = docker.image('rafael1abrao/node:latest')
+    //     	image.pull()
+    // 	}
+    // }
 
-    stage('Run image'){
+    // stage('Run image'){
 
-    	docker.image('rafael1abrao/node').withRun('-p 8000:3000') {
-            /* do things */
-        }
-    }
+    // 	docker.image('rafael1abrao/node').withRun('-p 8000:3000') {
+    //         /* do things */
+    //     }
+    // }
 }
