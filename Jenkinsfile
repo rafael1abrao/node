@@ -33,7 +33,7 @@ node {
     }
 
     stage('Remote docker') {
-        docker.withServer('tcp://10.5.205.93:2376', 'swarm-certs') {
+        docker.withServer('tcp://10.5.193.122:2376', 'swarm-certs') {
             docker.image('rafael1abrao/node').withRun('-p 8000:3000') {
             /* do things */
             }
