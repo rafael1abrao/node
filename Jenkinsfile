@@ -36,7 +36,8 @@ node {
         docker.withServer('tcp://10.5.193.122:2376', 'swarm-certs') {
             sh 'docker stop -t 0 node'
             sh 'docker rm -f node'
-            app.image('rafael1abrao/node').run('-p 8000:3000 --name node')
+            sh 'docker run -d -p 8000:3000 --name node rafael1abrao/node'
+            // app.image('rafael1abrao/node').run('-p 8000:3000 --name node')
         }
    }
 
